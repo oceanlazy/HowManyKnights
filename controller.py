@@ -16,6 +16,9 @@ class Controller:
                         5: self.settings,
                         6: exit}
 
+    def create_html(self):
+        self.view.output(self.model.create_desc_html())
+
     def example(self):
         self.view.output(self.model.example())
 
