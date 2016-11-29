@@ -44,6 +44,8 @@ class QtView:
         self.spinBox = QtWidgets.QSpinBox(self.verticalLayoutWidget)
         self.spinBox.setMaximumSize(QtCore.QSize(129, 16777215))
         self.spinBox.setObjectName("spinBox")
+        self.spinBox.setValue(8)
+        self.spinBox.setMaximum(11)
         self.horizontalLayout.addWidget(self.spinBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -53,6 +55,7 @@ class QtView:
         self.horizontalLayout_2.addWidget(self.label_2)
         self.spinBox_2 = QtWidgets.QSpinBox(self.verticalLayoutWidget)
         self.spinBox_2.setObjectName("spinBox_2")
+        self.spinBox_2.setValue(32)
         self.horizontalLayout_2.addWidget(self.spinBox_2)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.label_3 = QtWidgets.QLabel(form)
@@ -72,7 +75,7 @@ class QtView:
 
     def retranslateUi(self, form):
         _translate = QtCore.QCoreApplication.translate
-        form.setWindowTitle(_translate("form", "form"))
+        form.setWindowTitle(_translate("form", "HowManyKnights"))
         self.label.setText(_translate("form", "Desc size"))
         self.label_2.setText(_translate("form", "Knights num"))
         self.label_3.setText(_translate("form", "How Many Knights"))
