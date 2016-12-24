@@ -10,8 +10,7 @@ class View:
             print('\n'.join([' '.join(row) for row in desc]))
             print('\n{} knights on the desc.\n'.format(knights))
         elif isinstance(res, list):
-            print('\n'.join([' '.join(row) for row in res]))
-            print()
+            print('\n'.join([' '.join(row) for row in res]), '\n')
         elif isinstance(res, str):
             print(res)
         elif isinstance(res, Exception):
@@ -19,18 +18,17 @@ class View:
 
     @staticmethod
     def input(msg):
-        inp = input(msg)
-        return inp
+        return input(msg)
 
 
 class QtView:
     def __init__(self, _model):
         self.model = _model
 
-    def setupUi(self, form):
-        form.setObjectName("form")
-        form.resize(212, 362)
-        self.verticalLayoutWidget = QtWidgets.QWidget(form)
+    def setupUi(self, window):
+        window.setObjectName("window")
+        window.resize(212, 362)
+        self.verticalLayoutWidget = QtWidgets.QWidget(window)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 30, 181, 66))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
@@ -45,7 +43,7 @@ class QtView:
         self.spinBox.setMaximumSize(QtCore.QSize(129, 16777215))
         self.spinBox.setObjectName("spinBox")
         self.spinBox.setValue(8)
-        self.spinBox.setMaximum(11)
+        self.spinBox.setMaximum(14)
         self.horizontalLayout.addWidget(self.spinBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -58,29 +56,29 @@ class QtView:
         self.spinBox_2.setValue(32)
         self.horizontalLayout_2.addWidget(self.spinBox_2)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.label_3 = QtWidgets.QLabel(form)
+        self.label_3 = QtWidgets.QLabel(window)
         self.label_3.setGeometry(QtCore.QRect(40, 0, 131, 31))
         self.label_3.setStyleSheet("font: 75 italic 12pt \"Ubuntu\";")
         self.label_3.setObjectName("label_3")
-        self.pushButton = QtWidgets.QPushButton(form)
+        self.pushButton = QtWidgets.QPushButton(window)
         self.pushButton.setGeometry(QtCore.QRect(70, 100, 85, 27))
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.fill_desc)
-        self.textBrowser = QtWidgets.QTextBrowser(form)
+        self.textBrowser = QtWidgets.QTextBrowser(window)
         self.textBrowser.setGeometry(QtCore.QRect(10, 130, 191, 221))
         self.textBrowser.setObjectName("textBrowser")
 
-        self.retranslateUi(form)
-        QtCore.QMetaObject.connectSlotsByName(form)
+        self.retranslateUi(window)
+        QtCore.QMetaObject.connectSlotsByName(window)
 
-    def retranslateUi(self, form):
+    def retranslateUi(self, window):
         _translate = QtCore.QCoreApplication.translate
-        form.setWindowTitle(_translate("form", "HowManyKnights"))
-        self.label.setText(_translate("form", "Desc size"))
-        self.label_2.setText(_translate("form", "Knights num"))
-        self.label_3.setText(_translate("form", "How Many Knights"))
-        self.pushButton.setText(_translate("form", "Start"))
-        self.textBrowser.setHtml(_translate("form", self.model.desc_html))
+        window.setWindowTitle(_translate("window", "HowManyKnights"))
+        self.label.setText(_translate("window", "Desc size"))
+        self.label_2.setText(_translate("window", "Knights num"))
+        self.label_3.setText(_translate("window", "How Many Knights"))
+        self.pushButton.setText(_translate("window", "Start"))
+        self.textBrowser.setHtml(_translate("window", self.model.desc_html))
 
     def fill_desc(self):
         return

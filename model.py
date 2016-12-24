@@ -17,10 +17,10 @@ class Model:
         self.create_desc()
         cur_row = randint(0, self.desc_size - 1)
         cur_column = randint(0, self.desc_size - 1)
-        self.desc[cur_row][cur_column] = '♞'
+        self.desc[cur_row][cur_column] = chr(9822)
         positions = self.get_available_positions(cur_row, cur_column)
         for row, column in positions:
-            self.desc[row][column] = '•'
+            self.desc[row][column] = chr(8226)
         return self.desc
 
     def simple(self):
@@ -39,7 +39,7 @@ class Model:
             for column_num, column in enumerate(row):
                 positions = self.get_available_positions(row_num, column_num)
                 if column == 'o' and not self.enemies_is_near(positions) and self.knights_num > knights:
-                    self.desc[row_num][column_num] = '♞'
+                    self.desc[row_num][column_num] = chr(9822)
                     knights += 1
         return self.desc, knights
 
@@ -69,7 +69,7 @@ class Model:
             positions = self.get_available_positions(row_num, column_num)
             if not self.enemies_is_near(positions) and self.knights_num > self.knights_cur:
                 self.event.set()
-                self.desc[row_num][column_num] = '♘' if column == 'x' else '♞'
+                self.desc[row_num][column_num] = chr(9816) if column == 'x' else chr(9822)
                 self.knights_cur += 1
                 self.event.clear()
                 self.event.wait(timeout=.01)
@@ -90,10 +90,10 @@ class Model:
                     self.desc_html += '<td width=11 bgcolor="#ffffff"></td>'
                 elif cell == 'o':
                     self.desc_html += '<td width=11 bgcolor="#808080"></td>'
-                elif cell == '♘':
-                    self.desc_html += '<td bgcolor="#ffffff">♘</td>'
-                elif cell == '♞':
-                    self.desc_html += '<td bgcolor="#808080">♞</td>'
+                elif cell == chr(9816):
+                    self.desc_html += '<td bgcolor="#ffffff">{}</td>'.format(chr(9816))
+                elif cell == chr(9822):
+                    self.desc_html += '<td bgcolor="#808080">{}</td>'.format(chr(9822))
             self.desc_html += '</tr>'
         self.desc_html += '</table></body></html>'
 
